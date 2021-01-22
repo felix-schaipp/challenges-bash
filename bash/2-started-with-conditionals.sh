@@ -16,7 +16,7 @@
 # - echo YES or NO to STDOUT.
 
 # to test in terminal use
-# printf "5\n2" | sh 1-comparing-numbers.sh
+# printf "y" | sh 2-started-with-conditionals.sh
 
 # inputs
 read character
