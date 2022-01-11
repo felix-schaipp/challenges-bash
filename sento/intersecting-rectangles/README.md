@@ -38,8 +38,9 @@ available commands:
 
 ### Plan
 
-- [ ] write a small class and function to generate random rectangles to json
-- [ ] test the random rectangles generator
+- [x] build a small data structure for the rectangles to be stored
+- [x] write small classes to generate random rectangles to json
+- [x] test the random rectangles generator
 - [ ] write a small class to import the pairs of rectangles and check for intersection
 - [ ] test the class
 - [ ] invite `nimarb` to the project for review
