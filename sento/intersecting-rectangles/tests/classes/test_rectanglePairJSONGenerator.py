@@ -1,6 +1,21 @@
 import unittest
 import json
+import math
 from src.classes.rectanglePairJSONGenerator import RectanglePairJSONGenerator
+from src.classes.point import Point
+
+# helper function to check if we really generate rectangles here
+def isRectangle(a: Point, b: Point, c: Point, d: Point) -> bool:
+    cx = (a.x + b.x + c.x + d.x) / 4
+    cy = (a.y + b.y + c.y + d.y) / 4
+
+    dd1=pow(cx-a.x, 2)+pow(cy-a.y, 2)
+    dd2=pow(cx-b.x, 2)+pow(cy-b.y, 2)
+    dd3=pow(cx-c.x, 2)+pow(cy-c.y, 2)
+    dd4=pow(cx-d.x, 2)+pow(cy-d.y, 2)
+
+    precision = 1E-6
+    return math.isclose(dd1, dd2, rel_tol=precision) and math.isclose(dd1, dd3, rel_tol=precision) and math.isclose(dd1, dd4, rel_tol=precision)
 
 class TestRectanglePairJSONGenerator(unittest.TestCase):
 
@@ -18,9 +33,15 @@ class TestRectanglePairJSONGenerator(unittest.TestCase):
         Generates a rectangle with four point values
         """
         generator = RectanglePairJSONGenerator()
-        rectangle = generator.generateRectangle()
+        rectangle = generator.generateRectangle(2)
         self.assertEqual(type(rectangle), tuple )    
         self.assertEqual(len(rectangle), 4 )
+        p1 = Point(rectangle[0][0], rectangle[0][1])
+        p2 = Point(rectangle[1][0], rectangle[1][1])
+        p3 = Point(rectangle[2][0], rectangle[2][1])
+        p4 = Point(rectangle[3][0], rectangle[3][1])
+        
+        self.assertTrue(isRectangle(p1,p2,p3,p4))
 
     def testMethodGenerateRectanglePairError(self):
         """
