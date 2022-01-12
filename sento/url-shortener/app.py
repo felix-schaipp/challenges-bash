@@ -1,4 +1,5 @@
 import sqlite3
+import json
 from hashids import Hashids
 from flask import Flask, render_template, request, flash, redirect, url_for, jsonify
 import os
@@ -44,11 +45,17 @@ def encode(id):
     if original_id:
         shortUrl = request.host_url + id
         return jsonify(
-            shortdUrl=shortUrl
+            shortUrl=shortUrl
         )
     else:
         flash('Invalid URL')
         return redirect(url_for('index'))
+
+with app.test_client() as testClient:
+    response = testClient.get('/encode/5qW2')
+    jsonResponse = json.loads(response.get_data(as_text=True))
+    assert response.status_code == 200
+    assert jsonResponse['shortUrl'] == 'http://localhost/5qW2'
 
 @app.route('/decode/<id>')
 def decode(id):
@@ -68,3 +75,9 @@ def decode(id):
     else:
         flash('Invalid URL')
         return redirect(url_for('index'))
+
+# with app.test_client() as testClient:
+#     response = testClient.get('/decode/5qW2')
+#     jsonResponse = json.loads(response.get_data(as_text=True))
+#     assert response.status_code == 200
+#     assert jsonResponse['originalUrl'] == "https://en.wikipedia.org/wiki"
