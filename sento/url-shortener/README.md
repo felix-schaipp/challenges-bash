@@ -71,7 +71,7 @@ available commands:
 ### Plan
 
 - [x] boilerplate setup
-- [ ] create sqllite schema
-- [ ] create index page for input
+- [x] create sqllite schema
+- [x] create index page for input
 - [ ] encode/decode routes
 - [ ] tests
