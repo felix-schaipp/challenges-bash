@@ -74,4 +74,12 @@ available commands:
 - [x] create sqllite schema
 - [x] create index page for input
 - [x] encode/decode routes
-- [ ] tests
+- [x] tests (meeeh)
+
+### Further improvements
+
+- add more test setup
+- make the flask app configurable for different environments + dockerized
+- extract the tests out of the main app
+- setup a test database to ensure the endpoint tests for decode are running
+- move the env variables to a dotenv file
