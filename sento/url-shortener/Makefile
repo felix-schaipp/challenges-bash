@@ -20,7 +20,7 @@ run: ## Run the code
 
 test: ## Test the code
 	@type coverage >/dev/null 2>&1 || (echo "Run '$(PIP) install coverage' first." >&2 ; exit 1)
-	@coverage run -m unittest discover -s $(SRC_TEST) --pattern="test*.py"
+	@coverage run -m pytest app.py
 	@coverage report
 
 doc: ## Document the code
