@@ -7,7 +7,8 @@ if __name__ == "__main__":
         exit(1)
     generator = RectanglePairJSONGenerator(pairsToGenerate)
     generator.generatePairs()
-    generator.saveToJson()
+    PATH = './src/rectangle-pairs.json'
+    generator.saveToJson(PATH)
     print(f"We created a json file (rectangle-pairs.json) with {pairsToGenerate} pairs of rectangles for you...")
     
     # read in the generated json

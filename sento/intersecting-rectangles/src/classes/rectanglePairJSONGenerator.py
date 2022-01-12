@@ -24,6 +24,8 @@ class RectanglePairJSONGenerator:
         for i in range(self.numberOfPairs):
             self.rectanglePairStorage[f"pair-{i+1}"] = self.generateRectanglePair(i+1)
 
-    def saveToJson(self):
-        with open('./src/rectangle-pairs.json', 'w') as outputFile:
-            json.dump(self.rectanglePairStorage, outputFile)
+    def saveToJson(self, path):
+        if len(path) == 0 or path == None:
+            raise ValueError("You must define a path to save your pairs")
+        with open(path, 'w') as outputFile:
+            json.dump(self.rectanglePairStorage, outputFile, indent=2, sort_keys=True)

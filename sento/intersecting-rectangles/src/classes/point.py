@@ -3,5 +3,5 @@ class Point:
         self.x = x
         self.y = y
 
-    def getCoordinates(self):    
+    def getCoordinates(self):   
         return (self.x, self.y)
