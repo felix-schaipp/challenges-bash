@@ -1,12 +1,9 @@
 class Intersector:
-    def __init__(self):
-        pass
-
     def findBottomLeftCorner(self, coordinates):
-        return min(coordinates, key=lambda point: point[1])
+        return min(coordinates, key=lambda point: point[0] and point[1])
 
     def findTopRightCorner(self, coordinates):
-        return max(coordinates, key=lambda point: point[1])
+        return max(coordinates, key=lambda point: point[0] and point[1])
 
     def findCorners(self, coordinates):
         topRight = self.findTopRightCorner(coordinates)
