@@ -18,7 +18,9 @@ You have a JSON that contains the coordinates of two rectangles. Using the JSON 
 
 ## How to start
 
-To test the challenge `make run` and `make test`
+To test the challenge install the dependencies with `make deps-install` and then `make run` and `make test`.
+Expect tests to run.
+You will be asked in the terminal (stdin) how many random pairs you wanna generate, this will output the pairs to json. These pairs will than be analysed and the output is printed to stdout.
 Boilerplate python project copied from [Alexander Willner](https://github.com/AlexanderWillner/python-boilerplate)
 
 ```bash
@@ -41,6 +43,9 @@ available commands:
 - [x] build a small data structure for the rectangles to be stored
 - [x] write small classes to generate random rectangles to json
 - [x] test the random rectangles generator
-- [ ] write a small class to import the pairs of rectangles and check for intersection
-- [ ] test the class
-- [ ] invite `nimarb` to the project for review
+- [x] write a small class to import the pairs of rectangles and check for intersection
+- [x] test the class
+
+### Possible improvements
+
+To make it graphically more pleasing we could render each pair with numpy onto a canvas and than show if we have an intersection or not.
