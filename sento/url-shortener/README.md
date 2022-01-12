@@ -73,5 +73,5 @@ available commands:
 - [x] boilerplate setup
 - [x] create sqllite schema
 - [x] create index page for input
-- [ ] encode/decode routes
+- [x] encode/decode routes
 - [ ] tests

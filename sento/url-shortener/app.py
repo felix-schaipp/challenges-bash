@@ -37,3 +37,34 @@ def index():
         return render_template('index.html', short_url=hashid)
 
     return render_template('index.html')
+
+@app.route('/encode/<id>')
+def encode(id):
+    original_id = hashids.decode(id)
+    if original_id:
+        shortUrl = request.host_url + id
+        return jsonify(
+            shortdUrl=shortUrl
+        )
+    else:
+        flash('Invalid URL')
+        return redirect(url_for('index'))
+
+@app.route('/decode/<id>')
+def decode(id):
+    conn = getDbConnection()
+    original_id = hashids.decode(id)
+    if original_id:
+        original_id = original_id[0]
+        url_data = conn.execute('SELECT original_url FROM urls'
+                                ' WHERE id = (?)', (original_id,)
+                                ).fetchone()
+        originalUrl = url_data['original_url']                                
+        conn.commit()
+        conn.close()
+        return jsonify(
+            originalUrl=originalUrl
+        )
+    else:
+        flash('Invalid URL')
+        return redirect(url_for('index'))

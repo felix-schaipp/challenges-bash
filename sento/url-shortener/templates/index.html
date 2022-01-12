@@ -15,4 +15,11 @@
     </div>
     </form>
 
+    {% if short_url %}
+    <hr>
+    <ul class="list-group">
+        <li class="list-group-item"><a href="http://127.0.0.1:5000/encode/{{short_url}}">Encoded endpoint</a></li>
+        <li class="list-group-item"><a href="http://127.0.0.1:5000/decode/{{short_url}}">Decoded endpoint</a></li>
+    </ul>
+    {% endif %}
 {% endblock %}
