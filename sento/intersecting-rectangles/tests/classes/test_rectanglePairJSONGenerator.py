@@ -5,7 +5,7 @@ from src.classes.rectanglePairJSONGenerator import RectanglePairJSONGenerator
 from src.classes.point import Point
 
 # helper function to check if we really generate rectangles here
-def isRectangle(a: Point, b: Point, c: Point, d: Point) -> bool:
+def isRectangle(a: Point, b: Point, c: Point, d: Point, precision = 1E-6) -> bool:
     cx = (a.x + b.x + c.x + d.x) / 4
     cy = (a.y + b.y + c.y + d.y) / 4
 
@@ -14,7 +14,6 @@ def isRectangle(a: Point, b: Point, c: Point, d: Point) -> bool:
     dd3=pow(cx-c.x, 2)+pow(cy-c.y, 2)
     dd4=pow(cx-d.x, 2)+pow(cy-d.y, 2)
 
-    precision = 1E-6
     return math.isclose(dd1, dd2, rel_tol=precision) and math.isclose(dd1, dd3, rel_tol=precision) and math.isclose(dd1, dd4, rel_tol=precision)
 
 class TestRectanglePairJSONGenerator(unittest.TestCase):
