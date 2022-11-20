@@ -1,5 +1,5 @@
 import sqlite3
-import json
+# import json
 from hashids import Hashids
 from flask import Flask, render_template, request, flash, redirect, url_for, jsonify
 import os
@@ -10,9 +10,9 @@ def getDbConnection():
     connection.row_factory = sqlite3.Row
     return connection
 
-SECRET_KEY = os.getenv('FLASK_SECRET', '0000')
+# SECRET_KEY = os.getenv('FLASK_SECRET', '902h349r0p78w2q34ddqwere')
 app = Flask(__name__)
-app.config['SECRET_KEY'] = SECRET_KEY
+app.config['SECRET_KEY'] = "902h349r0p78w2q34ddqwere"
 
 hashids = Hashids(min_length=4, salt=app.config['SECRET_KEY'])
 
@@ -51,11 +51,11 @@ def encode(id):
         flash('Invalid URL')
         return redirect(url_for('index'))
 
-with app.test_client() as testClient:
-    response = testClient.get('/encode/5qW2')
-    jsonResponse = json.loads(response.get_data(as_text=True))
-    assert response.status_code == 200
-    assert jsonResponse['shortUrl'] == 'http://localhost/5qW2'
+# with app.test_client() as testClient:
+#     response = testClient.get('/encode/5qW2')
+#     jsonResponse = json.loads(response.get_data(as_text=True))
+#     assert response.status_code == 200
+#     assert jsonResponse['shortUrl'] == 'http://localhost/5qW2'
 
 @app.route('/decode/<id>')
 def decode(id):
